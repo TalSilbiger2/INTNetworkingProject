@@ -1,26 +1,35 @@
 Local DNS Server IP
 -------------------
-<ip-here>
+127.0.0.53
 
 
 
 Default gateway IP
 -------------------
-<ip-here>
+10.0.0.1
 
 
 
 DHCP IP allocation sys-logs
 -------------------
-<logs-here>
+2024-08-05T06:11:48.028766+00:00 ip-10-0-0-153 dhcpcd[442]: dhcpcd-10.0.6 starting
+2024-08-05T06:11:48.028770+00:00 ip-10-0-0-153 dhcpcd[445]: DUID 00:01:00:01:2e:42:7b:7e:0e:a3:6c:45:a3:63
+2024-08-05T06:11:48.028774+00:00 ip-10-0-0-153 dhcpcd[445]: ens5: IAID 6c:45:a3:63
+2024-08-05T06:11:48.028779+00:00 ip-10-0-0-153 dhcpcd[445]: ens5: soliciting a DHCP lease
+2024-08-05T06:11:48.028786+00:00 ip-10-0-0-153 dhcpcd[445]: ens5: offered 10.0.0.153 from 10.0.0.1
+2024-08-05T06:11:48.028790+00:00 ip-10-0-0-153 dhcpcd[445]: ens5: leased 10.0.0.153 for 3600 seconds
+2024-08-05T06:11:48.028794+00:00 ip-10-0-0-153 dhcpcd[445]: ens5: adding route to 10.0.0.0/24
+2024-08-05T06:11:48.028799+00:00 ip-10-0-0-153 dhcpcd[445]: ens5: adding default route via 10.0.0.1
+2024-08-05T06:11:48.028803+00:00 ip-10-0-0-153 dhcpcd[445]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only ens5
 
 
 
 Public to private num of hops
 -------------------
-<answer-here>
+1
 
 
 DNS queries from the private instance
 -------------------
-<answer-here>
+a private instance can successfully resolve the DNS address of a public website through proper configuration of DNS resolvers and network access mechanisms like NAT gateways. 
+This process involves sending DNS queries, possibly going through multiple resolvers, and receiving the necessary IP addresses to connect to public websites.
