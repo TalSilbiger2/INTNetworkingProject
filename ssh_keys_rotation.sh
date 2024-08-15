@@ -21,5 +21,5 @@ ssh-keygen -t rsa -b 4096 -f "$NEW_KEY_PATH" -N ""  -C "Key rotated on $(date)" 
 ssh -o StrictHostKeyChecking=no -i "$OLD_KEY_PATH" ubuntu@"$PRIVATE__IP" "mkdir -p ~/.ssh && chmod 700 ~/.ssh"
 cat "${NEW_KEY_PATH}.pub" | ssh -o StrictHostKeyChecking=no -i "$OLD_KEY_PATH" ubuntu@"$PRIVATE_INSTANCE_IP" "cat > ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 
-# Connect with new key
+# Connect with the new key
 ssh -o StrictHostKeyChecking=no -i "$NEW_KEY_PATH" ubuntu@"$PRIVATE_IP"
