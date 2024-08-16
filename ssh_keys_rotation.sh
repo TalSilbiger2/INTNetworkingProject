@@ -29,7 +29,7 @@ fi
 ssh -o StrictHostKeyChecking=no -i "$OLD_KEY_PATH" ubuntu@"$PRIVATE_IP" << EOF
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
-cat >> ~/.ssh/authorized_keys << EOL
+cat > ~/.ssh/authorized_keys << EOL
 $(cat "${NEW_KEY_PATH}.pub")
 EOL
 chmod 600 ~/.ssh/authorized_keys
