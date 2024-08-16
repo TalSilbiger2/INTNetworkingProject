@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 PRIVATE_IP="$1"
-cp "$HOME/tal-keys/keys.pem" "$HOME/.ssh/id_rsa_old"
+cp "$HOME/key.pem "$HOME/.ssh/id_rsa_old"
 
 OLD_KEY_PATH="$HOME/.ssh/id_rsa_old"  # Path to your old key
 NEW_KEY_PATH="$HOME/.ssh/id_rsa"   # Path to store the new key
