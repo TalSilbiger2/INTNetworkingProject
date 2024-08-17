@@ -7,24 +7,21 @@ if [ "$#" -ne 1 ]; then
 fi
 
 PRIVATE_IP="$1"
-cp "$HOME/key.pem" "$HOME/.ssh/id_rsa_old"
+#cp "$HOME/key.pem" "$HOME/.ssh/id_rsa_old"
 
-OLD_KEY_PATH="$HOME/.ssh/id_rsa_old"  # Path to your old key
+
 NEW_KEY_PATH="$HOME/.ssh/id_rsa"   # Path to store the new key
+OLD_KEY_PATH="$NEW_KEY_PATH".old  # Path to your old key
 
 # Generate a new SSH key pair
 ssh-keygen -t rsa -b 4096 -f "$NEW_KEY_PATH" -N ""  -C "Key rotated on $(date)" > /dev/null
+chmod 400 "$NEW_KEY_PATH"
 
 # Ensure the old key exists before using it
-if [ ! -f "$OLD_KEY_PATH" ]; then
-    echo "Old key not found at $OLD_KEY_PATH"
-    exit 1
-fi
-
-# Connect to the private instance and update authorized_keys
-# Ensure to use the old key for this connection
-#ssh -o StrictHostKeyChecking=no -i "$OLD_KEY_PATH" ubuntu@"$PRIVATE__IP" "mkdir -p ~/.ssh && chmod 700 ~/.ssh"
-#cat "${NEW_KEY_PATH}.pub" | ssh -o StrictHostKeyChecking=no -i "$OLD_KEY_PATH" ubuntu@"$PRIVATE_INSTANCE_IP" "cat > ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+#if [ ! -f "$OLD_KEY_PATH" ]; then
+#    echo "Old key not found at $OLD_KEY_PATH"
+#    exit 1
+#fi
 
 ssh -o StrictHostKeyChecking=no -i "$OLD_KEY_PATH" ubuntu@"$PRIVATE_IP" << EOF
 mkdir -p ~/.ssh
