@@ -36,4 +36,5 @@ fi
 
 
 # Test SSH connection with the new key
+echo "connect"
 ssh -o StrictHostKeyChecking=no -i "$NEW_KEY_PATH" ubuntu@"$PRIVATE_IP"
