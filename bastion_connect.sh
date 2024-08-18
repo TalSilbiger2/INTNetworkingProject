@@ -26,9 +26,9 @@ else
     # Case 1 & Case 3: Connect to the private instance via the public instance
     if [ -z "$COMMAND" ]; then
         # Case 1: Interactive SSH to private instance
-        ssh -i "$KEY_PATH" -t ubuntu@"$PUBLIC_IP" ssh -i /home/ubuntu/key.pem ubuntu@"$PRIVATE_IP"
+        ssh -i "$KEY_PATH" -t ubuntu@"$PUBLIC_IP" ssh -i /home/ubuntu/.ssh/id_rsa ubuntu@"$PRIVATE_IP"
     else
         # Case 3: Run command on the private instance
-        ssh -i "$KEY_PATH" -t ubuntu@"$PUBLIC_IP" ssh -i /home/ubuntu/key.pem ubuntu@"$PRIVATE_IP" "$COMMAND"
+        ssh -i "$KEY_PATH" -t ubuntu@"$PUBLIC_IP" ssh -i /home/ubuntu/.ssh/id_rsa ubuntu@"$PRIVATE_IP" "$COMMAND"
     fi
 fi
